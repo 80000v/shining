@@ -1,0 +1,37 @@
+extends ../layouts/management
+
+block body_content
+	.row
+		.col-lg-12
+			h1.page-header 我的策略
+	.row
+		.col-lg-12
+			form.form-horizontal(method="POST")
+				.panel.panel-primary
+					.panel-heading 我的策略
+					.panel-body
+						.row
+							.col-md-4
+								a.btn.btn-success(
+									href="/strategy/new"
+								) 新增
+						table#users-table.table.table-striped.table-bordered.table-hover.table-cell-align-center.table-narrow
+							thead
+								tr
+									th 建立時間
+									th 標題
+									th 交易所
+									th 幣別
+									th 狀態
+									th 功能
+							tbody
+								for strategy in strategies
+									tr
+										td #{__pug_ext.getFormattedDate(strategy.createdAt)}
+										td #{strategy.name}
+										td #{strategy.exchange}
+										td #{strategy.coin}
+										td #{strategy.status}
+										td
+											a.btn.btn-default.btn-xs(href="/strategy/" + strategy._id + "/edit") 修改
+											a.btn.btn-default.btn-xs(href="/strategy/" + strategy._id + "/delete") 刪除

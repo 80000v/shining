@@ -1,0 +1,13 @@
+extends ../layouts/management
+
+block body_content
+	.row
+		.col-lg-6
+			.panel.panel-primary
+				.panel-heading
+					.row
+						.col-xs-3
+							i.fa.fa-comments.fa-5x
+						.col-xs-9.text-right
+							.huge #{price.close}
+							div #{price.toCurrency}最新價格

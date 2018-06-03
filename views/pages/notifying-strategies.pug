@@ -1,0 +1,51 @@
+extends ../layouts/management
+
+block body_content
+	.row
+		.col-lg-12
+			h1.page-header 我的策略
+				a.btn.btn-success(
+					href="/notifying-strategy/new"
+				) 新增
+				.right
+					a.btn.btn-success.mr-5(
+						href="/notifying-strategy/new/q?coin=BTC"
+					) [BTC 逃命通知]
+					a.btn.btn-success.mr-5(
+						href="/notifying-strategy/new/q?coin=ETH"
+					) [ETH 逃命通知]
+					a.btn.btn-success.mr-5(
+						href="/notifying-strategy/new/q?coin=BCH"
+					) [BCH 逃命通知]
+					a.btn.btn-success.mr-5(
+						href="/notifying-strategy/new/q?coin=LTC"
+					) [LTC 逃命通知]
+					a.btn.btn-success.mr-5(
+						href="/notifying-strategy/new/q?coin=NEO"
+					) [NEO 逃命通知]
+	.row
+		.col-lg-12
+			form.form-horizontal(method="POST")
+				table#users-table.table.table-striped.table-bordered.table-hover.table-cell-align-center.table-narrow
+					thead
+						tr
+							th 建立時間
+							th 標題
+							th 交易所
+							th 幣別
+							th 狀態
+							th 功能
+					tbody
+						for strategy in strategies
+							tr
+								td #{__pug_ext.getFormattedDate(strategy.createdAt)}
+								td #{strategy.name}
+								td #{strategy.exchange}
+								td #{strategy.coin}
+								td #{strategy.status}
+								td
+									a.btn.btn-default.btn-xs(href="/notifying-strategy/" + strategy._id + "/edit") 修改
+									a.btn.btn-default.btn-xs(
+										href="/notifying-strategy/" + strategy._id + "/delete"
+										onclick="return confirm('確定刪除？')"
+									) 刪除

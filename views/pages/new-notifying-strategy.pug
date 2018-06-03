@@ -1,0 +1,97 @@
+extends ../layouts/management
+
+block body_content
+	.row
+		.col-lg-12
+			h1.page-header 新增策略
+	.row
+		.col-lg-12
+			form.form-horizontal(method="POST")
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2 標題
+						.col-md-6
+							input.form-control(
+								name="name"
+								required=true
+							)
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2 幣別
+						.col-md-6
+							select.form-control(
+								name="coin"
+								required=true
+							)
+								option(value="BTC") BTC
+								option(value="ETH") ETH
+								option(value="BCH") BCH
+								option(value="LTC") LTC
+								option(value="NEO") NEO
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2 交易所
+						.col-md-6
+							select.form-control(
+								name="exchange"
+								required=true
+							)
+								option(value="Binance") 幣安
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2 時間區段
+						.col-md-6
+							select.form-control(
+								name="unit"
+								required=true
+							)
+								option(value="86400") 天
+								option(value="14400") 4小時
+								option(value="10800") 3小時
+								option(value="3600") 小時
+								option(value="1800") 30分鐘
+								option(value="900") 15分鐘
+								option(value="300") 5分鐘
+				.row
+					.col-md-10.col-md-offset-1
+						hr
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2 交易條件
+						.col-md-2
+							div.form-control MA
+						.col-md-1
+							input.form-control(
+								name="targetInput"
+								required=true
+							)
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2
+						.col-md-3
+							select.form-control(
+								name="notifyType"
+								required=true
+							)
+								option(value="crossing-up") 向上穿越(Crossing Up)
+								option(value="crossing-down") 向下穿越(Crossing Down)
+								option(value="crossing") 交叉(Crossing)
+				.row
+					.form-group.col-md-12
+						label.control-label.col-md-2
+						.col-md-2
+							div.form-control MA
+						.col-md-1
+							input.form-control(
+								name="refInput"
+								required=true
+							)
+				if error
+					.row
+						.col-md-12
+							.alert.alert-danger #{error}
+				.row
+					.col-md-3.col-md-offset-2
+						button.btn.btn-success(
+							type="submit"
+						) 創建

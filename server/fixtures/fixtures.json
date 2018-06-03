@@ -1,0 +1,6 @@
+{
+	"users": [
+		{"username" : "admin", "password" : "admin", "role": "admin", "displayName": "admin", "status": "offline", "email": "daz.lee1987@gmail.com"},
+		{"username" : "teakadmin", "password" : "teakadmin", "role": "member", "displayName": "teak", "status": "offline", "email": "daz.lee1987@gmail.com"}
+	]
+}

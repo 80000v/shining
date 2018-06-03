@@ -1,0 +1,547 @@
+extends ../layouts/management
+
+block body_content
+	.row
+		.col-lg-12
+			h1.page-header 新增策略
+	.row
+		.col-lg-12
+			form.form-horizontal(method="POST")
+				.panel.panel-primary
+					.panel-heading 新增策略
+					.panel-body
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 標題
+								.col-md-6
+									input.form-control(
+										name="name"
+										required=true
+									)
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 幣別
+								.col-md-6
+									select.form-control(
+										name="coin"
+										required=true
+									)
+										option(value="BTC") BTC
+										option(value="ETH") ETH
+										option(value="BCH") BCH
+										option(value="IOTA") IOTA
+										option(value="XRP") XRP
+										option(value="ADA") ADA
+										option(value="XLM") XLM
+										option(value="LTC") LTC
+										option(value="NEO") NEO
+										option(value="EOS") EOS
+										option(value="XEM") XEM
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 交易所
+								.col-md-6
+									select.form-control(
+										name="exchange"
+										required=true
+									)
+										option(value="CCCAGG") CCCAGG
+
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 慢線公式
+								.col-md-6
+									select.form-control(
+										name="refFormula"
+										required=true
+									)
+										option(value="ma") ma
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 慢線數量
+								.col-md-6
+									input.form-control(
+										name="refInput"
+										required=true
+									)
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 慢線單位
+								.col-md-6
+									select.form-control(
+										name="refUnit"
+										required=true
+									)
+										option(value="86400") 天
+										option(value="10800") 3小時
+										option(value="3600") 小時
+										option(value="1800") 30分鐘
+										option(value="900") 15分鐘
+										option(value="300") 5分鐘
+
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 快線公式
+								.col-md-6
+									select.form-control(
+										name="targetFormula"
+										required=true
+									)
+										option(value="ma") ma
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 快線數量
+								.col-md-6
+									input.form-control(
+										name="targetInput"
+										required=true
+									)
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 快線單位
+								.col-md-6
+									select.form-control(
+										name="targetUnit"
+										required=true
+									)
+										option(value="86400") 天
+										option(value="10800") 3小時
+										option(value="3600") 小時
+										option(value="1800") 30分鐘
+										option(value="900") 15分鐘
+										option(value="300") 5分鐘
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 提醒email列表(用,分隔)
+								.col-md-6
+									input.form-control(
+										name="notifyEmails"
+										required=true
+									)
+						.row
+							.form-group.col-md-12
+								label.control-label.col-md-2 購買數量
+								.col-md-6
+									input.form-control(
+										name="buyAmount"
+										type="number"
+										required=true
+										step="0.000000001"
+									)
+
+						.panel.panel-primary
+							.panel-heading 買點訊號1
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="buySignals[0][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[0][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[0][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[0][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[0][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[0][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[0][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+
+						.panel.panel-success
+							.panel-heading 買點訊號2
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="buySignals[1][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[1][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[1][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[1][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[1][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[1][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[1][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+
+						.panel.panel-warning
+							.panel-heading 買點訊號3
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="buySignals[2][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[2][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[2][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[2][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="buySignals[2][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="buySignals[2][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="buySignals[2][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+						hr
+						.panel.panel-primary
+							.panel-heading 賣點訊號1
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="sellSignals[0][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[0][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[0][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[0][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[0][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[0][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[0][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+
+						.panel.panel-success
+							.panel-heading 賣點訊號2
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="sellSignals[1][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[1][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[1][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[1][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[1][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[1][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[1][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+
+						.panel.panel-warning
+							.panel-heading 賣點訊號3
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 啟用
+										.col-md-6.checkbox
+											label
+												input(
+													type="checkbox"
+													name="sellSignals[2][enable]"
+												)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[2][refFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[2][refInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 慢線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[2][refUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線公式
+										.col-md-6
+											select.form-control(
+												name="sellSignals[2][targetFormula]"
+											)
+												option(value="ma") ma
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線數量
+										.col-md-6
+											input.form-control(
+												name="sellSignals[2][targetInput]"
+											)
+								.row
+									.form-group.col-md-12
+										label.control-label.col-md-2 快線單位
+										.col-md-6
+											select.form-control(
+												name="sellSignals[2][targetUnit]"
+											)
+												option(value="86400") 天
+												option(value="10800") 3小時
+												option(value="3600") 小時
+												option(value="1800") 30分鐘
+												option(value="900") 15分鐘
+												option(value="300") 5分鐘
+
+						if error
+							.row
+								.col-md-12
+									.alert.alert-danger #{error}
+					.panel-footer.clear
+						button.btn.btn-primary.right(
+							type="submit"
+						) 創建

@@ -1,0 +1,19 @@
+[
+	{
+		"title"		: "策略",
+		"menu"		: [
+			{
+				"title": "我的策略",
+				"uri": "/notifying-strategy",
+				"roles" : ["member"]
+			}
+		],
+		"roles" : ["member"]
+	},
+	{
+		"title"		: "建議與問題回報",
+		"uri": "http://m.me/richpocketcoin",
+		"target": "_blank",
+		"roles" : ["member"]
+	}
+]

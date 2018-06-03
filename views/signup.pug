@@ -1,0 +1,53 @@
+extend ./layouts/entrance
+
+block body_content
+	.logo-container
+		img.logo(src="/images/logo-lg.png")
+	.login-container
+		.login-panel.panel.panel-default
+			.panel-heading
+				h3.panel-title 註冊
+			.panel-body
+				form(
+					method="POST"
+					action="/signup"
+				)
+					.form-group
+						input.form-control(
+							placeholder="帳號"
+							required=true
+							name="username"
+						)
+					.form-group
+						input.form-control(
+							placeholder="密碼"
+							name="password"
+							type="password"
+							required=true
+						)
+					.form-group
+						input.form-control(
+							placeholder="確認密碼"
+							name="confirmPassword"
+							type="password"
+							required=true
+						)
+					.form-group
+						input.form-control(
+							placeholder="您的名稱"
+							name="displayName"
+							required=true
+						)
+					.form-group
+						input.form-control(
+							placeholder="您的Eamil"
+							name="email"
+							type="email"
+							required=true
+						)
+					if errorMessage
+						.alert.alert-danger #{errorMessage}
+					.form-group
+						button.btn.btn-lg.btn-success.btn-block(
+							type="submit"
+						) 註冊

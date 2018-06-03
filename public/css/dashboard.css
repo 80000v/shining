@@ -1,0 +1,16 @@
+.btn-success {
+	background-color: #047bff;
+	border-color: #047bff;
+}
+.btn-success:hover {
+	background-color: #158cff;
+	border-color: #158cff;
+}
+.btn-success:focus,.btn-success:active,.btn-success:focus:active {
+	background-color: #036aee;
+	border-color: #036aee;
+}
+
+html, body, #page-wrapper {
+	height: 100%;
+}
