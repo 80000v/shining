@@ -8,37 +8,38 @@ block body_content
 		.col-lg-12
 			h1.page-header 網站品項
 			ul.nav.nav-pills
-				li.active
-					a(href="#") 沙發
-				li
-					a(href="#") 茶几
-	.row.item
-		.col-lg-offset-1.col-lg-2.header
-			img(
-				src=src="https://static.wixstatic.com/media/39d890_3056865dc7134c35b9e2c9220da72185~mv2_d_3000_3000_s_4_2.jpg/v1/fill/w_1000,h_1000,q_85,usm_0.66_1.00_0.01/39d890_3056865dc7134c35b9e2c9220da72185~mv2_d_3000_3000_s_4_2.jpg"
-			)
-		.col-lg-8
-			form
-				.form-group.col-lg-12
-					label 名稱
-					input.form-control(name="name")
-				.form-group.col-lg-6
-					label 照片下面的描述
-					textarea.form-control(name="abstract")
-				.form-group.col-lg-6
-					label 商品描述
-					textarea.form-control(name="description")
-				.form-group.col-lg-6
-					label 商品規格
-					textarea.form-control(name="spec")
-				.form-group.col-lg-6
-					label 保養與清潔
-					textarea.form-control(name="other1")
-				.form-group.col-lg-6
-					label 萬元免運費
-					textarea.form-control(name="other2")
-				.form-group.col-lg-6
-					label 保固與鑑賞
-					textarea.form-control(name="other3")
-				.col-lg-6
-					button.btn.btn-primary 送出
+				for _itemCategory in itemCategories
+					li(class=itemCategory.name == _itemCategory.name ? "active" : "")
+						a(href="?categoryId="+_itemCategory._id) #{_itemCategory.name}
+	for item in items
+		.row.item
+			.col-lg-offset-1.col-lg-2.header
+				img(
+					src=item.imageUrl
+				)
+			.col-lg-8
+				form(method="POST")
+					.form-group.col-lg-12
+						label 名稱
+						input.form-control(name="name", value=item.name)
+					.form-group.col-lg-6
+						label 照片下面的描述
+						textarea.form-control(name="abstract") #{item.abstract}
+					.form-group.col-lg-6
+						label 商品描述
+						textarea.form-control(name="description") #{item.description}
+					.form-group.col-lg-6
+						label 商品規格
+						textarea.form-control(name="spec") #{item.spec}
+					.form-group.col-lg-6
+						label 保養與清潔
+						textarea.form-control(name="other1") #{item.other1}
+					.form-group.col-lg-6
+						label 萬元免運費
+						textarea.form-control(name="other2") #{item.other2}
+					.form-group.col-lg-6
+						label 保固與鑑賞
+						textarea.form-control(name="other3") #{item.other3}
+					.col-lg-6
+						input.hidden(name="id", value=item._id)
+						button.btn.btn-primary 送出

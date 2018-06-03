@@ -6,6 +6,10 @@ const ModelSchema = new Schema({
 		type: String,
 		required: true
 	},
+	imageUrl: {
+		type: String,
+		required: true
+	},
 	abstract: {
 		type: String,
 	},
@@ -36,7 +40,7 @@ const ModelSchema = new Schema({
 	timestamps: {createdAt: "createdAt", updatedAt: "updatedAt"},
 });
 
-const Model = mongoose.model("orders", ModelSchema);
+const Model = mongoose.model("items", ModelSchema);
 
 module.exports = {
 	find: function (...theArgs) {

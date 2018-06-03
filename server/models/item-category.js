@@ -14,7 +14,7 @@ const ModelSchema = new Schema({
 	timestamps: {createdAt: "createdAt", updatedAt: "updatedAt"},
 });
 
-const Model = mongoose.model("orders", ModelSchema);
+const Model = mongoose.model("item_categories", ModelSchema);
 
 module.exports = {
 	find: function (...theArgs) {

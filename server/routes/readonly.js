@@ -6,7 +6,6 @@ const {
 } = require("../stores/item-category");
 const {
 	getItems,
-	updateItemById
 } = require("../stores/item");
 
 router.get("/", async function (req, res) {
@@ -23,39 +22,11 @@ router.get("/", async function (req, res) {
 			categoryId: itemCategory._id
 		});
 
-		res.render("pages/items", {
+		res.render("pages/readonly-items", {
 			itemCategory,
 			itemCategories,
 			items
 		});
-	} catch (error) {
-		console.log(error);
-		res.status(400).send(error);
-	}
-});
-router.post("/", async function (req, res) {
-	try {
-		const {
-			id,
-			name,
-			abstract,
-			description,
-			spec,
-			other1,
-			other2,
-			other3
-		} = req.body;
-
-		await updateItemById(id, {
-			name,
-			abstract,
-			description,
-			spec,
-			other1,
-			other2,
-			other3
-		});
-		res.redirect("back");
 	} catch (error) {
 		console.log(error);
 		res.status(400).send(error);

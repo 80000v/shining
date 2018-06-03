@@ -29,6 +29,7 @@ app.use(require('stylus').middleware( {
 }));
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use("/read", require("./routes/readonly"));
 app.use("/login", require("./routes/login"));
 app.use("/logout", require("./routes/logout"));
 app.use("/signup", require("./routes/signup"));
