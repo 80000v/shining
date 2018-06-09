@@ -8,7 +8,6 @@ const ModelSchema = new Schema({
 	},
 	imageUrl: {
 		type: String,
-		required: true
 	},
 	abstract: {
 		type: String,

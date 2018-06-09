@@ -11,6 +11,10 @@ block body_content
 				for _itemCategory in itemCategories
 					li(class=itemCategory.name == _itemCategory.name ? "active" : "")
 						a(href="?categoryId="+_itemCategory._id) #{_itemCategory.name}
+			a.btn.btn-warning.m-10(
+				href="/create?categoryId="+itemCategory._id
+				onclick="return confirm('確定新增？')"
+			) 新增品項
 	for item in items
 		.row.item
 			.col-lg-offset-1.col-lg-2.header
@@ -19,6 +23,9 @@ block body_content
 				)
 			.col-lg-8
 				form(method="POST")
+					.form-group.col-lg-6
+						label 預設圖片
+						input.form-control(name="imageUrl", value=item.imageUrl)
 					.form-group.col-lg-12
 						label 名稱
 						input.form-control(name="name", value=item.name)

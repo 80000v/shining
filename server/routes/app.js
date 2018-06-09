@@ -6,7 +6,8 @@ const {
 } = require("../stores/item-category");
 const {
 	getItems,
-	updateItemById
+	updateItemById,
+	createItem
 } = require("../stores/item");
 
 router.get("/", async function (req, res) {
@@ -33,10 +34,27 @@ router.get("/", async function (req, res) {
 		res.status(400).send(error);
 	}
 });
+router.get("/create", async function (req, res) {
+	try {
+		const { categoryId } = req.query;
+
+		await createItem({
+			name: "新品項",
+			imageUrl: "",
+			categoryId
+		});
+
+		res.redirect("back");
+	} catch (error) {
+		console.log(error);
+		res.status(400).send(error);
+	}
+});
 router.post("/", async function (req, res) {
 	try {
 		const {
 			id,
+			imageUrl,
 			name,
 			abstract,
 			description,
@@ -47,6 +65,7 @@ router.post("/", async function (req, res) {
 		} = req.body;
 
 		await updateItemById(id, {
+			imageUrl,
 			name,
 			abstract,
 			description,
