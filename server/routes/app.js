@@ -7,7 +7,8 @@ const {
 const {
 	getItems,
 	updateItemById,
-	createItem
+	createItem,
+	deleteItemById
 } = require("../stores/item");
 
 router.get("/", async function (req, res) {
@@ -74,6 +75,18 @@ router.post("/", async function (req, res) {
 			other2,
 			other3
 		});
+		res.redirect("back");
+	} catch (error) {
+		console.log(error);
+		res.status(400).send(error);
+	}
+});
+router.get("/delete", async function (req, res) {
+	try {
+		const { id } = req.query;
+
+		await deleteItemById(id);
+
 		res.redirect("back");
 	} catch (error) {
 		console.log(error);

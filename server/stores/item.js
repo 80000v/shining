@@ -2,6 +2,7 @@ const {
 	find,
 	findOneAndUpdate,
 	create,
+	remove
 } = require("../models/item");
 
 function createItem(attributes) {
@@ -24,9 +25,13 @@ function updateItemById(_id, attributes) {
 function getItems(attributes) {
 	return find(attributes);
 }
+function deleteItemById(_id) {
+	return remove({_id});
+}
 
 module.exports = {
 	createItem,
+	deleteItemById,
 	updateItemById,
 
 	getItems

@@ -47,6 +47,12 @@ block body_content
 					.form-group.col-lg-6
 						label 保固與鑑賞
 						textarea.form-control(name="other3") #{item.other3}
-					.col-lg-6
+					.col-lg-3
 						input.hidden(name="id", value=item._id)
 						button.btn.btn-primary 送出
+					.col-lg-9
+						input.hidden(name="id", value=item._id)
+						a.right.btn.btn-danger(
+							href="/delete?id="+item._id
+							onclick="return confirm('確定刪除？')"
+						) 刪除
